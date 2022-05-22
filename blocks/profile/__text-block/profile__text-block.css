@@ -1,0 +1,16 @@
+.profile__text-block {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 336px;
+  padding-left: 30px;
+  margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__text-block {
+    max-width: 282px;
+    justify-content: center;
+    padding: 0;
+    margin: 26px auto 36px;
+  }
+}
