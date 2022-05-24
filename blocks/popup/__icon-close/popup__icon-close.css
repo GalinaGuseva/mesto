@@ -2,8 +2,8 @@
   background-image: url(../../../images/Close.svg);
   width: 32px;
   height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
-  background-color: black;
   background-size: cover;
   background-position: center;
   cursor: pointer;
