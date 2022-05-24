@@ -9,6 +9,7 @@
   cursor: pointer;
   position: absolute;
   border: none;
+  padding: 0;
   top: -40px;
   right: -40px;
   z-index: 1;
