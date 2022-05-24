@@ -3,6 +3,11 @@
   margin: 0;
   padding: 0;
   margin-bottom: 40px;
+  transition: opacity 0.2s ease-out;
+}
+
+.header__logo:hover {
+  opacity: 0;
 }
 
 @media screen and (max-width: 767px) {

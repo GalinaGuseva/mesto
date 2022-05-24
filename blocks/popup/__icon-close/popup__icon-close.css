@@ -1,14 +1,14 @@
 .popup__icon-close {
-  background-image: url(../../../images/close.svg);
+  background-image: url(../../../images/Close.svg);
   width: 32px;
   height: 32px;
   box-sizing: border-box;
-  align-self: center;
-  border: none;
-  background-color: #000;
+  background-color: black;
+  background-size: cover;
   background-position: center;
   cursor: pointer;
   position: absolute;
+  border: none;
   top: -40px;
   right: -40px;
   z-index: 1;
@@ -26,6 +26,7 @@
   .popup__icon-close {
     width: 20px;
     height: 20px;
+    top: -36px;
     right: 0;
   }
 }
