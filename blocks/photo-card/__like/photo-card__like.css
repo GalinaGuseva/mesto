@@ -8,8 +8,10 @@
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: white;
   box-sizing: border-box;
   cursor: pointer;
+  flex-shrink: 0;
   transition: opacity 0.2s ease-in-out;
   -webkit-transition: opacity 0.2s ease-in-out;
   -moz-transition: opacity 0.2s ease-in-out;

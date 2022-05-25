@@ -9,22 +9,29 @@
   <body class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="лого" class="header__logo" />
-      <div class="header__line"></div>
     </header>
     <main>
       <section class="profile">
         <div class="profile__info">
           <img src="./images/avatar.jpg" alt="Кусто" class="profile__image" />
           <div class="profile__text-block">
-            <h2 class="profile__name">Жак-Ив Кусто</h2>
-            <button class="profile__edit-button"></button>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+              type="button"
+              class="profile__edit-button"
+              title="Редактировать"
+            ></button>
             <p class="profile__job">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button"></button>
+        <button
+          type="button"
+          class="profile__add-button"
+          title="Добавить фото"
+        ></button>
       </section>
 
-      <section class="photos">
+      <section class="photos" aria-label="Фотографии мест">
         <ul class="photos__list">
           <li class="photo-card">
             <img
@@ -33,8 +40,8 @@
               class="photo-card__image"
             />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Гора Эльбрус</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Гора Эльбрус</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
           <li class="photo-card">
@@ -44,8 +51,8 @@
               class="photo-card__image"
             />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Домбай</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Домбай</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
           <li class="photo-card">
@@ -55,8 +62,8 @@
               class="photo-card__image"
             />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Карачаевск</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Карачаевск</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
           <li class="photo-card">
@@ -66,15 +73,15 @@
               class="photo-card__image"
             />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Джанхот</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Джанхот</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
           <li class="photo-card">
             <img src="./images/Урал.jpg" alt="Урал" class="photo-card__image" />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Урал</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Урал</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
           <li class="photo-card">
@@ -84,42 +91,43 @@
               class="photo-card__image"
             />
             <div class="photo-card__caption">
-              <p class="photo-card__text">Алания</p>
-              <button class="photo-card__like"></button>
+              <h2 class="photo-card__text">Алания</h2>
+              <button type="button" class="photo-card__like"></button>
             </div>
           </li>
         </ul>
       </section>
-
-      <div class="popup">
-        <div class="popup__container">
-          <button class="popup__icon-close"></button>
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
-            <input
-              type="text"
-              placeholder="Введите имя"
-              class="popup__field popup__field_name"
-              name="userName"
-            />
-            <div class="popup__line"></div>
-            <input
-              type="text"
-              placeholder="О себе"
-              class="popup__field popup__field_job"
-              name="userJob"
-            />
-            <div class="popup__line"></div>
-            <button type="submit" class="popup__button-submit">
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2022 Mesto Russia</p>
     </footer>
-    <script src="script.js"></script>
+    <div class="popup">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__icon-close"
+          title="Закрыть"
+        ></button>
+        <h4 class="popup__title">Редактировать профиль</h4>
+        <form name="edit-profile" class="popup__form">
+          <input
+            type="text"
+            placeholder="Введите имя"
+            class="popup__field popup__field_input_name"
+            name="userName"
+          />
+          <input
+            type="text"
+            placeholder="О себе"
+            class="popup__field popup__field_input_job"
+            name="userJob"
+          />
+          <button type="submit" class="popup__button-submit" title="Сохранить">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <script defer src="script.js"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@
   align-items: flex-start;
   max-width: 880px;
   margin: 45px auto 40px;
+  border-bottom: 1px solid rgb(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 1023px) {
@@ -15,7 +16,7 @@
 
 @media screen and (max-width: 767px) {
   .header {
-    margin: 28px auto 38.25px;
+    margin: 28px auto 42px;
     max-width: calc(100% - 54px);
   }
 }

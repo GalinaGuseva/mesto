@@ -6,6 +6,9 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  padding-bottom: 13px;
   border: none;
+}
+
+.popup__field:focus {
+  outline: none;
 }
