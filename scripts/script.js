@@ -5,7 +5,7 @@ const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
 const nameInput = document.querySelector(".popup__field[name='userName']");
 const jobInput = document.querySelector(".popup__field[name='userJob']");
-const formElement = popup.querySelector('.popup__form');
+const formElement = popup.querySelector('.popup__container');
 
 function togglePopup(popupElement) {
     popupElement.classList.toggle('popup_opened');
