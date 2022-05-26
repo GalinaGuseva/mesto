@@ -4,7 +4,6 @@
   flex-direction: row;
   margin: 0 auto;
   justify-content: space-between;
-  padding-top: 40px;
 }
 
 @media screen and (max-width: 900px) {
