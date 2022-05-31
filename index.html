@@ -7,100 +7,106 @@
     <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
-    <header class="header">
-      <img src="./images/logo.svg" alt="лого" class="header__logo" />
-    </header>
-    <main>
-      <section class="profile">
-        <div class="profile__info">
-          <img src="./images/avatar.jpg" alt="Кусто" class="profile__image" />
-          <div class="profile__text-block">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button
-              type="button"
-              class="profile__edit-button"
-              title="Редактировать"
-            ></button>
-            <p class="profile__job">Исследователь океана</p>
+    <div class="page__center">
+      <header class="header">
+        <img src="./images/logo.svg" alt="лого" class="header__logo" />
+      </header>
+      <main>
+        <section class="profile">
+          <div class="profile__info">
+            <img src="./images/avatar.jpg" alt="Кусто" class="profile__image" />
+            <div class="profile__text-block">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button
+                type="button"
+                class="profile__edit-button"
+                title="Редактировать"
+              ></button>
+              <p class="profile__job">Исследователь океана</p>
+            </div>
           </div>
-        </div>
-        <button
-          type="button"
-          class="profile__add-button"
-          title="Добавить фото"
-        ></button>
-      </section>
+          <button
+            type="button"
+            class="profile__add-button"
+            title="Добавить фото"
+          ></button>
+        </section>
 
-      <section class="photos" aria-label="Фотографии мест">
-        <ul class="photos__list">
-          <li class="photo-card">
-            <img
-              src="./images/Эльбрус.jpg"
-              alt="Эльбрус"
-              class="photo-card__image"
-            />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Гора Эльбрус</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-          <li class="photo-card">
-            <img
-              src="./images/Домбай.jpg"
-              alt="Домбай"
-              class="photo-card__image"
-            />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Домбай</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-          <li class="photo-card">
-            <img
-              src="./images/Карачаевск.jpg"
-              alt="Карачаевск"
-              class="photo-card__image"
-            />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Карачаевск</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-          <li class="photo-card">
-            <img
-              src="./images/Джанхот.jpg"
-              alt="Джанхот"
-              class="photo-card__image"
-            />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Джанхот</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-          <li class="photo-card">
-            <img src="./images/Урал.jpg" alt="Урал" class="photo-card__image" />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Урал</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-          <li class="photo-card">
-            <img
-              src="./images/Алания.jpg"
-              alt="Алания"
-              class="photo-card__image"
-            />
-            <div class="photo-card__caption">
-              <h2 class="photo-card__text">Алания</h2>
-              <button type="button" class="photo-card__like"></button>
-            </div>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__text">© 2022 Mesto Russia</p>
-    </footer>
+        <section class="photos" aria-label="Фотографии мест">
+          <ul class="photos__list">
+            <li class="photo-card">
+              <img
+                src="./images/Эльбрус.jpg"
+                alt="Эльбрус"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Гора Эльбрус</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+            <li class="photo-card">
+              <img
+                src="./images/Домбай.jpg"
+                alt="Домбай"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Домбай</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+            <li class="photo-card">
+              <img
+                src="./images/Карачаевск.jpg"
+                alt="Карачаевск"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Карачаевск</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+            <li class="photo-card">
+              <img
+                src="./images/Джанхот.jpg"
+                alt="Джанхот"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Джанхот</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+            <li class="photo-card">
+              <img
+                src="./images/Урал.jpg"
+                alt="Урал"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Урал</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+            <li class="photo-card">
+              <img
+                src="./images/Алания.jpg"
+                alt="Алания"
+                class="photo-card__image"
+              />
+              <div class="photo-card__caption">
+                <h2 class="photo-card__text">Алания</h2>
+                <button type="button" class="photo-card__like"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">© 2022 Mesto Russia</p>
+      </footer>
+    </div>
     <div class="popup">
       <form name="edit-profile" class="popup__container">
         <button

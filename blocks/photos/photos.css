@@ -1,19 +1,16 @@
 .photos {
-  max-width: 880px;
-  margin: 51px auto;
-  padding: 0;
+  max-width: 100%;
+  padding-bottom: 66px;
 }
 
 @media screen and (max-width: 1023px) {
   .photos {
-    max-width: 581px;
-    margin-top: 43px;
+    padding-bottom: 58px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .photos {
-    max-width: 282px;
-    margin-top: 36px;
+    padding-bottom: 48px;
   }
 }
