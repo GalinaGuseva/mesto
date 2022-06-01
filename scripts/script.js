@@ -1,3 +1,4 @@
+//Попап + редактирование
 const popup = document.querySelector('.popup');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.popup__icon-close');
@@ -13,6 +14,7 @@ function openPopup(popupElement) {
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
 }
+//Эффект плавного появления и закрытия попапа
 
 const fadeIn = (el, timeout, display) => {
     el.style.opacity = 0;
@@ -23,7 +25,7 @@ const fadeIn = (el, timeout, display) => {
     }, 200);
   };
 
-  const fadeOut = (el, timeout) => {
+const fadeOut = (el, timeout) => {
     el.style.opacity = 1;
     el.style.transition = `opacity ${timeout}ms`;
     el.style.opacity = 0;
@@ -33,7 +35,7 @@ const fadeIn = (el, timeout, display) => {
     }, timeout);
   };
 
-
+// Кнопки открытия, закрытия и передачи данных попапа с формой редактирования
 editButton.addEventListener('click', () => {
     openPopup(popup);
     nameInput.focus();
@@ -54,3 +56,85 @@ formElement.addEventListener('submit', function(e) {
     fadeOut(popup, 1000);
     closePopup(popup);
 });
+
+// Начальное добавление карточек с фотографиями
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+  const photoCardTemplateElement = document.querySelector('.photo-card-template').content; 
+  const photosListElement = document.querySelector('.photos__list');
+  
+  initialCards.forEach(function (element) {
+    const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
+    photoCard.querySelector('.photo-card__text').textContent = element.name;
+    //photoCard.querySelector('.photo-card__image').alt.textContent = element.name;
+    photoCard.querySelector('.photo-card__image').src.textContent = element.link;
+    photosListElement.prepend(photoCard)
+});
+
+//Открытие и закрытие попапа с карточкой добавления фото 
+
+const addPopup = document.querySelector('.add-popup');
+const captionInput = document.querySelector(".popup__field[name='caption']");
+const linkInput = document.querySelector(".popup__field[name='photo-link']");
+const addButton = document.querySelector('.profile__add-button');
+const closeAddButton = addPopup.querySelector('.popup__icon-close');
+const addFormElement = addPopup.querySelector(".popup__container[name='add-photo']");
+
+function openAddPopup(addPopupElement) {
+        addPopupElement.classList.add('popup_opened');
+ }; 
+    
+function closeAddPopup(addPopupElement) {
+        addPopupElement.classList.remove('popup_opened');
+};  
+
+addButton.addEventListener('click', () => {
+        openAddPopup(addPopup);
+        captionInput.focus();
+        fadeIn(addPopup, 1000, 'flex');
+        });
+        
+closeAddButton.addEventListener('click', () => {
+            closeAddPopup(addPopup);
+            fadeOut(addPopup, 1000);
+           });       
+
+addFormElement.addEventListener('submit', function(e) {
+            e.preventDefault();
+            userName.textContent = nameInput.value;
+            userJob.textContent = jobInput.value;
+            fadeOut(popup, 1000);
+            closePopup(popup);
+        });
+
+//Добавление фото через кнопку и форму add
+
+        //const addPhotoCard = element => {
+ // const PhotoCard = createPhotoCard(element);
+ // photoCardElement.prepend(photoCard);
+//};const photoCardElement = document.querySelector('.photo-card');        
