@@ -1,0 +1,6 @@
+.photo-card__trash {
+  box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

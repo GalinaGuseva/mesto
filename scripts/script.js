@@ -141,8 +141,6 @@ addFormElement.addEventListener('submit', (e) => {
 });
 
 //Кнопка like
-const likeButton = document.querySelector('.photo-card__like');
-
-likeButton.addEventListener('click', (e) => {
-  e.target.classList.toggle('photo-card__like_active');
+photoCard.querySelector('.photo-card__like').addEventListener('click', (e) => {
+  e.currentTarget.classList.toggle('photo-card__like_active');
 });
