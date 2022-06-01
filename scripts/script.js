@@ -49,7 +49,7 @@ closeButton.addEventListener('click', () => {
     fadeOut(popup, 1000);
    });
 
-formElement.addEventListener('submit', function(e) {
+formElement.addEventListener('submit', (e) => {
     e.preventDefault();
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
@@ -87,15 +87,16 @@ const initialCards = [
 
   const photoCardTemplateElement = document.querySelector('.photo-card-template').content; 
   const photosListElement = document.querySelector('.photos__list');
-  
+
   initialCards.forEach(function (element) {
     const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
     photoCard.querySelector('.photo-card__text').textContent = element.name;
-    //photoCard.querySelector('.photo-card__image').alt.textContent = element.name;
-    photoCard.querySelector('.photo-card__image').src.textContent = element.link;
-    photosListElement.prepend(photoCard)
+    photoCard.querySelector('.photo-card__image').src = element.link;
+    photoCard.querySelector('.photo-card__image').alt = element.name;
+    photosListElement.prepend(photoCard);
 });
-
+  
+  
 //Открытие и закрытие попапа с карточкой добавления фото 
 
 const addPopup = document.querySelector('.add-popup');
@@ -103,7 +104,7 @@ const captionInput = document.querySelector(".popup__field[name='caption']");
 const linkInput = document.querySelector(".popup__field[name='photo-link']");
 const addButton = document.querySelector('.profile__add-button');
 const closeAddButton = addPopup.querySelector('.popup__icon-close');
-const addFormElement = addPopup.querySelector(".popup__container[name='add-photo']");
+
 
 function openAddPopup(addPopupElement) {
         addPopupElement.classList.add('popup_opened');
@@ -124,17 +125,24 @@ closeAddButton.addEventListener('click', () => {
             fadeOut(addPopup, 1000);
            });       
 
-addFormElement.addEventListener('submit', function(e) {
-            e.preventDefault();
-            userName.textContent = nameInput.value;
-            userJob.textContent = jobInput.value;
-            fadeOut(popup, 1000);
-            closePopup(popup);
-        });
 
 //Добавление фото через кнопку и форму add
 
-        //const addPhotoCard = element => {
- // const PhotoCard = createPhotoCard(element);
- // photoCardElement.prepend(photoCard);
-//};const photoCardElement = document.querySelector('.photo-card');        
+const addFormElement = addPopup.querySelector(".popup__container[name='add-photo']");
+
+addFormElement.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
+  photoCard.querySelector('.photo-card__text').textContent = captionInput.value;
+  photoCard.querySelector('.photo-card__image').src = linkInput.value;
+  photosListElement.prepend(photoCard);
+  closeAddPopup(popup);
+  fadeOut(addPopup, 1000);
+});
+
+//Кнопка like
+const likeButton = document.querySelector('.photo-card__like');
+
+likeButton.addEventListener('click', (e) => {
+  e.target.classList.toggle('photo-card__like_active');
+});
