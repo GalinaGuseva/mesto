@@ -4,6 +4,7 @@
   box-sizing: border-box;
   display: block;
   object-fit: cover;
+  margin: 0 auto;
   padding-top: 1.28px;
-  z-index: 2;
+  z-index: 1;
 }

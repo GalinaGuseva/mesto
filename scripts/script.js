@@ -93,6 +93,17 @@ const initialCards = [
     photoCard.querySelector('.photo-card__text').textContent = element.name;
     photoCard.querySelector('.photo-card__image').src = element.link;
     photoCard.querySelector('.photo-card__image').alt = element.name;
+    const likeButton = photoCard.querySelector('.photo-card__like');
+    likeButton.addEventListener('click', (e) => {
+      e.currentTarget.classList.toggle('photo-card__like_active');
+    });
+   
+// Удаление карточек   
+    const deleteButton = photoCard.querySelector('.photo-card__btn-delete');
+    deleteButton.addEventListener('click', (e) => {
+      const photosListElement = deleteButton.closest('.photo-card');
+      photosListElement.remove('photo-card');
+    });
     photosListElement.prepend(photoCard);
 });
   
@@ -135,12 +146,16 @@ addFormElement.addEventListener('submit', (e) => {
   const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
   photoCard.querySelector('.photo-card__text').textContent = captionInput.value;
   photoCard.querySelector('.photo-card__image').src = linkInput.value;
+  photoCard.querySelector('.photo-card__like').addEventListener('click', (e) => {
+    e.currentTarget.classList.toggle('photo-card__like_active');
+  });
+  const deleteButton = photoCard.querySelector('.photo-card__btn-delete');
+    deleteButton.addEventListener('click', (e) => {
+      const photosListElement = deleteButton.closest('.photo-card');
+      photosListElement.remove('photo-card');
+    });
+  
   photosListElement.prepend(photoCard);
   closeAddPopup(popup);
   fadeOut(addPopup, 1000);
-});
-
-//Кнопка like
-photoCard.querySelector('.photo-card__like').addEventListener('click', (e) => {
-  e.currentTarget.classList.toggle('photo-card__like_active');
 });
