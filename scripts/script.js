@@ -106,8 +106,7 @@ const initialCards = [
     });
     photosListElement.prepend(photoCard);
 });
-  
-  
+    
 //Открытие и закрытие попапа с карточкой добавления фото 
 
 const addPopup = document.querySelector('.add-popup');
