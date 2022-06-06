@@ -1,15 +1,6 @@
 .photo-popup__container {
-  display: block;
   max-width: 75vw;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+  display: block;
   position: relative;
   z-index: 1;
-}
-
-@media screen and (max-width: 767px) {
-  .photo-popup__container {
-    max-width: 240px;
-  }
 }
