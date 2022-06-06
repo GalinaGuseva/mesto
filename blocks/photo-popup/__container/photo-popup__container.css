@@ -2,5 +2,6 @@
   max-width: 75vw;
   display: block;
   position: relative;
+  padding: 0;
   z-index: 1;
 }
