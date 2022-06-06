@@ -1,10 +1,10 @@
 .photo-popup__close {
-  background-image: url(../../../images/Close.svg);
+  background-image: url(/../../../images/Close.svg);
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
-  background-position: 50%;
-  border: 0;
-  padding: 0;
+  background-size: cover;
+  box-sizing: border-box;
+  background-position: center;
   cursor: pointer;
   box-shadow: none;
   width: 32px;
@@ -12,7 +12,6 @@
   top: -40px;
   right: -40px;
   outline: none;
-  opacity: 1;
   z-index: 1;
   transition: opacity 0.2s ease-in-out;
   -webkit-transition: opacity 0.2s ease-in-out;
