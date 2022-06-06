@@ -7,7 +7,8 @@ const userJob = document.querySelector('.profile__job');
 const nameInput = document.querySelector(".popup__field[name='userName']");
 const jobInput = document.querySelector(".popup__field[name='userJob']");
 const formElement = popup.querySelector('.popup__container');
-
+const photoPopup = document.querySelector('.photo-popup');
+const photoCloseButton = photoPopup.querySelector('.photo-popup__close');
 //Эффект плавного появления и закрытия попапа
 const fadeIn = (el, timeout, display) => {
   el.style.opacity = 0;
@@ -36,6 +37,7 @@ function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
     fadeOut(popupElement, 1000);
 }
+
 // Кнопки открытия, закрытия и передачи данных попапа с формой редактирования
 editButton.addEventListener('click', () => {
     openPopup(popup);
@@ -99,8 +101,23 @@ const initialCards = [
       const photosListElement = deleteButton.closest('.photo-card');
       photosListElement.remove('photo-card');
     });
-    photosListElement.prepend(photoCard);
-});
+//Реализация попапа с фотографиями
+      const photoCardImage = photoCard.querySelector('.photo-card__image');
+      const bigPhotoPopup = element => {
+        photoPopup.querySelector('.photo-popup__image').src = element.link;
+        photoPopup.querySelector('.photo-popup__caption').textContent = element.name; 
+      };
+      photoCardImage.addEventListener('click', (e) => {
+          bigPhotoPopup(element);
+          openPopup(photoPopup);
+      });
+      photoCloseButton.addEventListener('click', (e) => {
+        closePopup(photoPopup)
+        });
+
+      photosListElement.prepend(photoCard);
+    });
+       
  //Открытие и закрытие попапа с карточкой добавления фото 
 const addPopup = document.querySelector('.add-popup');
 const captionInput = document.querySelector(".popup__field[name='caption']");
@@ -120,8 +137,9 @@ const addFormElement = addPopup.querySelector(".popup__container[name='add-photo
 addFormElement.addEventListener('submit', (e) => {
   e.preventDefault();
   const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
-  photoCard.querySelector('.photo-card__text').textContent = captionInput.value;
   photoCard.querySelector('.photo-card__image').src = linkInput.value;
+  photoCard.querySelector('.photo-card__text').textContent = captionInput.value;
+  photoCard.querySelector('.photo-card__image').alt = captionInput.value;
   photoCard.querySelector('.photo-card__like').addEventListener('click', (e) => {
   e.currentTarget.classList.toggle('photo-card__like_active');
 });
@@ -130,28 +148,20 @@ addFormElement.addEventListener('submit', (e) => {
   const photosListElement = deleteButton.closest('.photo-card');
   photosListElement.remove('photo-card');
 });
+  const photoCardImage = photoCard.querySelector('.photo-card__image');
+  const photoCardText =  photoCard.querySelector('.photo-card__text');
+  const bigPhotoPopup = (photoCardImage, photoCardText) => {
+    photoPopup.querySelector('.photo-popup__image').src = photoCardImage.src;
+    photoPopup.querySelector('.photo-popup__caption').textContent = photoCardText.textContent; 
+  };
+  photoCardImage.addEventListener('click', (e) => {
+      bigPhotoPopup(photoCardImage, photoCardText);
+      openPopup(photoPopup);
+  });
+  photoCloseButton.addEventListener('click', (e) => {
+        closePopup(photoPopup)
+        });
+
   photosListElement.prepend(photoCard);
   closePopup(addPopup);
 });
-//Реализация попапа с фотографиями
-const photoPopup = document.querySelector('.photo-popup');
-const closePhotoPopupButton = photoPopup.querySelector('.popup__icon-close');
-photoPopupImage = photoPopup.querySelector('.photo-popup__image');
-photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
-
-
-photosListElement.addEventListener('click', (e) => {
-  //const photoCard = getPhotoCardByEvent(e);
-  if (e.target.classList.contains('photo-card__image')) {
-    photoPopupImage.src = e.target.src;
-    const photoCard = e.target.closest('photo-card__image');
-    const PhotoCardText = photoCard => photoCard.querySelector('.photo-card__text');
-    photoPopupCaption.textContent = PhotoCardText.textContent; 
-    openPopup(photoPopup);
-};
-});
-closePhotoPopupButton.addEventListener('click', closePopup(photoPopup));
-
-
-
-

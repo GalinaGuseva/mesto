@@ -5,6 +5,7 @@
   text-align: left;
   font-style: normal;
   color: #ffffff;
-  padding-top: 10px;
+  padding: 0;
+  margin-top: 10px;
   z-index: 1;
 }
