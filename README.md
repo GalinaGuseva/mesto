@@ -10,20 +10,9 @@
 
 Файловая структура проекта построена по технологии Nested БЭМ. При создании применены расширенные возможности HTML и CSS, JavaScript.
 
-Функционал:
-Редактирование профиля пользователя
-Добавление и удаление фотографии
-"Лайк" для фотографии
-Попап для просмотра фотографий в увеличенном размере
+Функционал: редактирование профиля пользователя, добавление и удаление фотографии, "лайк" для фотографии, попап для просмотра фотографий в увеличенном размере.
 
-Технологии:
-Flexbox
-Positioning Elements
-Animation and Transform using CSS
-BEM Methodology
-File Structure and File Paths (Nested BEM)
-Git
-Figma
+Технологии: Flexbox, Positioning Elements, Animation and Transform using CSS, BEM Methodology, File Structure and File Paths (Nested BEM), Git, Figma
 
 ### Контакты
 
