@@ -38,7 +38,7 @@ function closePopup(popupElement) {
     fadeOut(popupElement, 1000);
 }
 
-// Кнопки открытия, закрытия и передачи данных попапа с формой редактирования
+// Кнопки открытия, закрытия и передачи данных попапа на форме редактирования
 editButton.addEventListener('click', () => {
     openPopup(editPopup);
     nameInput.focus();
@@ -120,10 +120,10 @@ const initialCards = [
        
  //Открытие и закрытие попапа с карточкой добавления фото 
 const addPopup = document.querySelector('.add-popup');
-const captionInput = document.querySelector(".edit-popup__field[name='caption']");
-const linkInput = document.querySelector(".edit-popup__field[name='photo-link']");
+const captionInput = document.querySelector(".add-popup__field[name='caption']");
+const linkInput = document.querySelector(".add-popup__field[name='photo-link']");
 const addButton = document.querySelector('.profile__add-button');
-const closeAddButton = addPopup.querySelector('.edit-popup__icon-close');
+const closeAddButton = addPopup.querySelector('.add-popup__icon-close');
 
 addButton.addEventListener('click', () => {
       openPopup(addPopup);
@@ -133,7 +133,7 @@ closeAddButton.addEventListener('click', () => {
         closePopup(addPopup);
  }); 
  //Добавление фото через кнопку и попап-форму add
-const addFormElement = addPopup.querySelector(".edit-popup__container[name='add-photo']");
+const addFormElement = addPopup.querySelector(".add-popup__container[name='add-photo']");
 addFormElement.addEventListener('submit', (e) => {
   e.preventDefault();
   const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
