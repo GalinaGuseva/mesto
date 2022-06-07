@@ -1,12 +1,12 @@
 //Попап + редактирование
-const popup = document.querySelector('.popup');
+const editPopup = document.querySelector('.edit-popup');
 const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.popup__icon-close');
+const closeButton = document.querySelector('.edit-popup__icon-close');
 const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
-const nameInput = document.querySelector(".popup__field[name='userName']");
-const jobInput = document.querySelector(".popup__field[name='userJob']");
-const formElement = popup.querySelector('.popup__container');
+const nameInput = document.querySelector(".edit-popup__field[name='userName']");
+const jobInput = document.querySelector(".edit-popup__field[name='userJob']");
+const formElement = editPopup.querySelector('.edit-popup__container');
 const photoPopup = document.querySelector('.photo-popup');
 const photoCloseButton = photoPopup.querySelector('.photo-popup__close');
 //Эффект плавного появления и закрытия попапа
@@ -30,30 +30,30 @@ const fadeOut = (el, timeout) => {
 };
 //Функции открытия и закрытия попапа
 function openPopup(popupElement) {
-    popupElement.classList.add('popup_opened');
+    popupElement.classList.add('edit-popup_opened');
     fadeIn(popupElement, 1000, 'flex');
 }
 function closePopup(popupElement) {
-    popupElement.classList.remove('popup_opened');
+    popupElement.classList.remove('edit-popup_opened');
     fadeOut(popupElement, 1000);
 }
 
 // Кнопки открытия, закрытия и передачи данных попапа с формой редактирования
 editButton.addEventListener('click', () => {
-    openPopup(popup);
+    openPopup(editPopup);
     nameInput.focus();
     nameInput.value = userName.textContent;
     jobInput.value = userJob.textContent;
     });
 closeButton.addEventListener('click', () => {
-    closePopup(popup);
+    closePopup(editPopup);
     });
 
 formElement.addEventListener('submit', (e) => {
     e.preventDefault();
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
-    closePopup(popup);
+    closePopup(editPopup);
 });
 // Начальное добавление карточек с фотографиями
 const initialCards = [
@@ -120,10 +120,10 @@ const initialCards = [
        
  //Открытие и закрытие попапа с карточкой добавления фото 
 const addPopup = document.querySelector('.add-popup');
-const captionInput = document.querySelector(".popup__field[name='caption']");
-const linkInput = document.querySelector(".popup__field[name='photo-link']");
+const captionInput = document.querySelector(".edit-popup__field[name='caption']");
+const linkInput = document.querySelector(".edit-popup__field[name='photo-link']");
 const addButton = document.querySelector('.profile__add-button');
-const closeAddButton = addPopup.querySelector('.popup__icon-close');
+const closeAddButton = addPopup.querySelector('.edit-popup__icon-close');
 
 addButton.addEventListener('click', () => {
       openPopup(addPopup);
@@ -133,7 +133,7 @@ closeAddButton.addEventListener('click', () => {
         closePopup(addPopup);
  }); 
  //Добавление фото через кнопку и попап-форму add
-const addFormElement = addPopup.querySelector(".popup__container[name='add-photo']");
+const addFormElement = addPopup.querySelector(".edit-popup__container[name='add-photo']");
 addFormElement.addEventListener('submit', (e) => {
   e.preventDefault();
   const photoCard = photoCardTemplateElement.querySelector('.photo-card').cloneNode(true);
