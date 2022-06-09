@@ -1,18 +1,15 @@
-.photo-popup__close {
-  background-image: url(../../../images/Close.svg);
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
-  box-sizing: border-box;
-  background-position: center;
-  cursor: pointer;
-  border: none;
-  box-shadow: none;
+.popup__btn-close {
+  background-image: url(../../../images/Close\ Icon.svg);
   width: 32px;
   height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: absolute;
   top: -40px;
   right: -40px;
-  outline: none;
   z-index: 1;
   transition: opacity 0.2s ease-in-out;
   -webkit-transition: opacity 0.2s ease-in-out;
@@ -20,12 +17,12 @@
   -o-transition: opacity 0.2s ease-in-out;
 }
 
-.photo-popup__close:hover {
+.popup__btn-close:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {
-  .photo-popup__close {
+  .popup__btn-close {
     width: 20px;
     height: 20px;
     top: -36px;

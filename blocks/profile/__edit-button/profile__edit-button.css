@@ -12,6 +12,7 @@
   border: 1px solid #fff;
   margin-left: 18px;
   margin-top: 22px;
+  flex-shrink: 0;
   transition: opacity 0.2s ease-in-out;
   -webkit-transition: opacity 0.2s ease-in-out;
   -moz-transition: opacity 0.2s ease-in-out;

@@ -16,12 +16,14 @@
           <div class="profile__info">
             <img src="./images/avatar.jpg" alt="Кусто" class="profile__image" />
             <div class="profile__text-block">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button
-                type="button"
-                class="profile__edit-button"
-                title="Редактировать"
-              ></button>
+              <div class="profile__text-container">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button
+                  type="button"
+                  class="profile__edit-button"
+                  title="Редактировать"
+                ></button>
+              </div>
               <p class="profile__job">Исследователь океана</p>
             </div>
           </div>
@@ -42,29 +44,29 @@
       </footer>
     </div>
 
-    <div class="edit-popup">
-      <form name="edit-profile" class="edit-popup__container">
+    <div class="popup edit-popup">
+      <form name="edit-profile" class="edit-popup__container popup__container">
         <button
           type="button"
-          class="edit-popup__icon-close"
+          class="edit-popup__icon-close popup__btn-close"
           title="Закрыть"
         ></button>
-        <h4 class="edit-popup__title">Редактировать профиль</h4>
+        <h4 class="edit-popup__title popup__title">Редактировать профиль</h4>
         <input
           type="text"
           placeholder="Введите имя"
-          class="edit-popup__field"
+          class="edit-popup__field popup__field"
           name="userName"
         />
         <input
           type="text"
           placeholder="О себе"
-          class="edit-popup__field"
+          class="edit-popup__field popup__field"
           name="userJob"
         />
         <button
           type="submit"
-          class="edit-popup__button-submit"
+          class="edit-popup__button-submit popup__btn-submit"
           title="Сохранить"
         >
           Сохранить
@@ -72,39 +74,43 @@
       </form>
     </div>
 
-    <div class="add-popup">
-      <form name="add-photo" class="add-popup__container">
+    <div class="popup add-popup">
+      <form name="add-photo" class="add-popup__container popup__container">
         <button
           type="button"
-          class="add-popup__icon-close"
+          class="add-popup__icon-close popup__btn-close"
           title="Закрыть"
         ></button>
-        <h4 class="add-popup__title">Новое место</h4>
+        <h4 class="add-popup__title popup__title">Новое место</h4>
         <input
           type="text"
           placeholder="Название"
-          class="add-popup__field"
+          class="add-popup__field popup__field"
           name="caption"
         />
         <input
           type="text"
           placeholder="Ссылка на картинку"
-          class="add-popup__field"
+          class="add-popup__field popup__field"
           name="photo-link"
         />
-        <button type="submit" class="add-popup__button-submit" title="Создать">
+        <button
+          type="submit"
+          class="add-popup__button-submit popup__btn-submit"
+          title="Создать"
+        >
           Создать
         </button>
       </form>
     </div>
 
-    <div class="photo-popup">
+    <div class="popup photo-popup">
       <figure class="photo-popup__container">
         <img src="./images/Урал.jpg" alt="Урал" class="photo-popup__image" />
         <figcaption class="photo-popup__caption"></figcaption>
         <button
           type="button"
-          class="photo-popup__close"
+          class="photo-popup__close popup__btn-close"
           title="Закрыть"
         ></button>
       </figure>
@@ -133,6 +139,7 @@
         </div>
       </li>
     </template>
+    <script src="./scripts/cards.js"></script>
     <script defer src="./scripts/script.js"></script>
   </body>
 </html>
