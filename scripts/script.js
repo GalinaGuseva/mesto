@@ -10,6 +10,7 @@ const cardTemplateElement = document.querySelector('.photo-card-template').conte
 const photosListElement = document.querySelector('.photos__list');
 const photoPopup = document.querySelector('.photo-popup');
 const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
+const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
 const buttonClosePhotoPopup = photoPopup.querySelector('.photo-popup__close');
 const popupAddForm = document.querySelector('.add-popup');
 const captionInput = document.querySelector(".add-popup__field[name='caption']");
@@ -29,7 +30,8 @@ function closePopup(popupElement) {
   const createPhotoPopup = element => {
     photoPopupImage.src = element.link;
     photoPopupImage.alt = element.name;
-    photoPopup.querySelector('.photo-popup__caption').textContent = element.name; 
+    photoPopupCaption.textContent = element.name; 
+    openPopup(photoPopup);
   };
   
  const createCard = element => {
@@ -42,8 +44,7 @@ function closePopup(popupElement) {
   cardImage.src = element.link;
   cardImage.alt = element.name;
   cardImage.addEventListener('click', (e) => {
-    createPhotoPopup(element);
-    openPopup(photoPopup);
+    createPhotoPopup(element);   
  });
   buttonLike.addEventListener('click', (e) => {
   e.currentTarget.classList.toggle('photo-card__like_active');
@@ -52,11 +53,16 @@ function closePopup(popupElement) {
     const photosListElement = buttonDelete.closest('.photo-card');
     photosListElement.remove('photo-card');
 });
-   photosListElement.prepend(card);
-   return card;  
- }
+    return card;  
+ };
+
+ const renderCard = element => {
+  card = createCard(element);
+  photosListElement.prepend(card);
+  };
  
- initialCards.forEach(createCard);
+ initialCards.forEach(renderCard);
+
  
  buttonAddPopup.addEventListener('click', (e) => {
     openPopup(popupAddForm);
@@ -64,17 +70,10 @@ function closePopup(popupElement) {
 
 formAddElement.addEventListener('submit', (e) => {
   e.preventDefault();
-  const inputs = [{name: captionInput.value, link: linkInput.value}];
-  inputs.forEach(createCard);
+  renderCard({name: captionInput.value, link: linkInput.value});
   closePopup(popupAddForm);
-  e.stopPropagation();
-  captionInput.value = '';
-  linkInput.value = '';
+  formAddElement.reset();
  });
-
-buttonCloseAddPopup.addEventListener('click', (e) => {
-  closePopup(popupAddForm);
-}); 
 
   buttonEdit.addEventListener('click', (e) => {
   openPopup(popupEditForm);
@@ -96,3 +95,7 @@ buttonCloseEditForm.addEventListener('click', (e) => {
 buttonClosePhotoPopup.addEventListener('click', (e) => {
   closePopup(photoPopup);
 });
+
+buttonCloseAddPopup.addEventListener('click', (e) => {
+  closePopup(popupAddForm);
+});  

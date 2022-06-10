@@ -1,3 +1,4 @@
 .profile__text-container {
   display: flex;
+  align-items: baseline;
 }
