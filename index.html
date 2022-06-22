@@ -45,25 +45,49 @@
     </div>
 
     <div class="popup edit-popup">
-      <form name="edit-profile" class="edit-popup__container popup__container">
+      <form
+        name="edit-profile"
+        class="edit-popup__container popup__container"
+        novalidate
+      >
         <button
           type="button"
           class="edit-popup__icon-close popup__btn-close"
           title="Закрыть"
         ></button>
         <h4 class="edit-popup__title popup__title">Редактировать профиль</h4>
-        <input
-          type="text"
-          placeholder="Введите имя"
-          class="edit-popup__field popup__field"
-          name="userName"
-        />
-        <input
-          type="text"
-          placeholder="О себе"
-          class="edit-popup__field popup__field"
-          name="userJob"
-        />
+        <div class="popup__input">
+          <input
+            type="text"
+            placeholder="Введите имя"
+            class="edit-popup__field popup__field"
+            name="userName"
+            id="name-input"
+            maxlength="40"
+            minlength="2"
+            required
+          />
+          <span
+            id="userName-error"
+            class="popup__error-message name-input-error"
+          ></span>
+        </div>
+        <div class="popup__input">
+          <input
+            type="text"
+            placeholder="О себе"
+            class="edit-popup__field popup__field"
+            name="userJob"
+            id="job-input"
+            maxlength="200"
+            minlength="2"
+            required
+          />
+          <span
+            id="userJob-error"
+            class="popup__error-message job-input-error"
+          ></span>
+        </div>
         <button
           type="submit"
           class="edit-popup__button-submit popup__btn-submit"
@@ -75,25 +99,47 @@
     </div>
 
     <div class="popup add-popup">
-      <form name="add-photo" class="add-popup__container popup__container">
+      <form
+        name="add-photo"
+        class="add-popup__container popup__container"
+        novalidate
+      >
         <button
           type="button"
           class="add-popup__icon-close popup__btn-close"
           title="Закрыть"
         ></button>
         <h4 class="add-popup__title popup__title">Новое место</h4>
-        <input
-          type="text"
-          placeholder="Название"
-          class="add-popup__field popup__field"
-          name="caption"
-        />
-        <input
-          type="text"
-          placeholder="Ссылка на картинку"
-          class="add-popup__field popup__field"
-          name="photo-link"
-        />
+        <div class="popup__input">
+          <input
+            type="text"
+            placeholder="Название"
+            class="add-popup__field popup__field"
+            name="caption"
+            id="caption-input"
+            maxlength="30"
+            minlength="2"
+            required
+          />
+          <span
+            id="text-error"
+            class="popup__error-message caption-input-error"
+          ></span>
+        </div>
+        <div class="popup__input">
+          <input
+            type="url"
+            id="url-input"
+            placeholder="Ссылка на картинку"
+            class="add-popup__field popup__field"
+            name="photo-link"
+            required
+          />
+          <span
+            id="url-error"
+            class="popup__error-message url-input-error"
+          ></span>
+        </div>
         <button
           type="submit"
           class="add-popup__button-submit popup__btn-submit"
@@ -140,6 +186,7 @@
       </li>
     </template>
     <script src="./scripts/cards.js"></script>
+    <script src="./scripts/validate.js"></script>
     <script defer src="./scripts/script.js"></script>
   </body>
 </html>

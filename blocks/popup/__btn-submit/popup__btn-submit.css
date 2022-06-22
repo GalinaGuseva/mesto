@@ -5,12 +5,13 @@
   padding: 0;
   border: none;
   border-radius: 2px;
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
   text-align: center;
+  background-color: #000000;
+  color: #ffffff;
   transition: all 0.2s ease-in;
+  cursor: pointer;
 }
 
 .popup__btn-submit:hover {
