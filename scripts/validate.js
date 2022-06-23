@@ -23,6 +23,10 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
+const isInputValid = (inputElement) => {
+  return inputElement.validity.valid;    
+};
+
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
@@ -30,6 +34,9 @@ const hasInvalidInput = (inputList) => {
 };
 
 const checkInputValidity = (formElement, inputElement) => {
+  if (isInputValid) {
+    hideInputError(formElement, inputElement);
+  }
   if (hasInvalidInput) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {

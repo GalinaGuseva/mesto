@@ -15,7 +15,7 @@ const captionInput = document.querySelector(".add-popup__field[name='caption']")
 const linkInput = document.querySelector(".add-popup__field[name='photo-link']");
 const buttonAddPopup = document.querySelector('.profile__add-button');
 const formAddElement = popupAddForm.querySelector(".add-popup__container[name='add-photo']");
-//const buttonSubmitAddPopup = formAddElement.querySelector('popup__btn-submit');
+const buttonSubmitAddPopup = formAddElement.querySelector('.popup__btn-submit');
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
@@ -25,7 +25,8 @@ function openPopup(popupElement) {
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
-    document.removeEventListener('keydown', handleClosePopupToEsc);   
+    document.removeEventListener('keydown', handleClosePopupToEsc);
+    document.removeEventListener('click', handleClosePopupToOverlayOrButton); 
   }
 
 const handleButtonLike = (e) => e.target.classList.toggle('photo-card__like_active');
@@ -78,7 +79,8 @@ const handleAddPhoto = () => {
  
 const handleOpenEditForm = () => {
   nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent;  
+  jobInput.value = userJob.textContent;
+  hideInputError(formEditElement, nameInput, jobInput);
 }
 
 const handleCloseEditForm = () => {
@@ -87,22 +89,31 @@ const handleCloseEditForm = () => {
   closePopup(popupEditForm);
 }
 
+const handleClearAddPopupForm = () => {
+  captionInput.value = '';
+  linkInput.value = '';
+  hideInputError(formAddElement, captionInput, linkInput);
+ }
+
+  //Listeners
+
 buttonAddPopup.addEventListener('click', (e) => {
-  openPopup(popupAddForm);  
+  openPopup(popupAddForm);
+  handleClearAddPopupForm();
+  buttonSubmitAddPopup.classList.add('popup__btn-submit_disabled'); 
 });
 
 formAddElement.addEventListener('submit', (e) => {
   e.preventDefault();
-  handleAddPhoto();
+  handleAddPhoto();  
 });
 
 buttonEdit.addEventListener('click', (e) => {
   openPopup(popupEditForm);
-  handleOpenEditForm();
-  });
+  handleOpenEditForm();  
+});
  
 formEditElement.addEventListener('submit', (e) => {
   e.preventDefault();
   handleCloseEditForm();
 });
-
