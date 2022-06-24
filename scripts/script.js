@@ -15,7 +15,6 @@ const captionInput = document.querySelector(".add-popup__field[name='caption']")
 const linkInput = document.querySelector(".add-popup__field[name='photo-link']");
 const buttonAddPopup = document.querySelector('.profile__add-button');
 const formAddElement = popupAddForm.querySelector(".add-popup__container[name='add-photo']");
-const buttonSubmitAddPopup = formAddElement.querySelector('.popup__btn-submit');
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
@@ -25,7 +24,6 @@ function openPopup(popupElement) {
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
-    clearErrorsByClosePopup(popupElement);
     document.removeEventListener('keydown', handleClosePopupToEsc);
     popupElement.removeEventListener('mousedown', handleClosePopupToOverlayOrButton); 
   }
@@ -80,34 +78,21 @@ const handleAddPhoto = () => {
  
 const handleOpenEditForm = () => {
   nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent; 
+  jobInput.value = userJob.textContent;  
 };
 
 const handleCloseEditForm = () => {
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
   closePopup(popupEditForm);
-};
-
-const handleClearAddPopupForm = () => {
-  captionInput.value = '';
-  linkInput.value = '';   
- };
-
- const clearErrorsByClosePopup = (popupElement) => {
-  const inputList = Array.from(popupElement.querySelectorAll(config.inputSelector));
-  inputList.forEach((inputElement) => {  
-      hideInputError(popupElement, inputElement, config);
-  });
-};
+}; 
 
   //Listeners
 
 buttonAddPopup.addEventListener('click', (e) => {
   openPopup(popupAddForm);
-  handleClearAddPopupForm();
-  buttonSubmitAddPopup.classList.add('popup__btn-submit_disabled');
-  buttonSubmitAddPopup.setAttribute('disabled', true);
+  formAddElement.reset();
+  clearErrors(formAddElement, config);
 });
 
 formAddElement.addEventListener('submit', (e) => {
@@ -117,7 +102,8 @@ formAddElement.addEventListener('submit', (e) => {
 
 buttonEdit.addEventListener('click', (e) => {
   openPopup(popupEditForm);
-  handleOpenEditForm();  
+  handleOpenEditForm(); 
+  clearErrors(formEditElement, config); 
 });
  
 formEditElement.addEventListener('submit', (e) => {

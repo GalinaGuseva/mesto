@@ -7,6 +7,16 @@ const config = {
   errorClass: 'popup__error-message_visible'
 };
 
+function clearErrors(formElement, config) {
+  const {inputSelector, submitButtonSelector} = config;
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector)); 
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);   
+  inputList.forEach((inputElement) => {   
+      hideInputError(formElement, inputElement, config); 
+  }); 
+  toggleButtonState(inputList, buttonElement, config)
+}; 
+
   const showInputError = (formElement, inputElement, errorMessage, config)  => {
   const {inputErrorClass, errorClass} = config;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
