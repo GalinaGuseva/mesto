@@ -1,4 +1,13 @@
-const showInputError = (formElement, inputElement, errorMessage, config)  => {
+const config = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__btn-submit',
+  inactiveButtonClass: 'popup__btn-submit_disabled',
+  inputErrorClass: 'popup__field_invalid',
+  errorClass: 'popup__error-message_visible'
+};
+
+  const showInputError = (formElement, inputElement, errorMessage, config)  => {
   const {inputErrorClass, errorClass} = config;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
@@ -60,11 +69,4 @@ const enableValidation = (config) => {
 })
 };
 
-enableValidation({
-  formSelector: '.popup__container',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__btn-submit',
-  inactiveButtonClass: 'popup__btn-submit_disabled',
-  inputErrorClass: 'popup__field_invalid',
-  errorClass: 'popup__error-message_visible'
-});
+enableValidation(config);
