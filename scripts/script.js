@@ -20,13 +20,14 @@ const buttonSubmitAddPopup = formAddElement.querySelector('.popup__btn-submit');
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
     document.addEventListener('keydown', handleClosePopupToEsc);
-    document.addEventListener('click', handleClosePopupToOverlayOrButton);   
+    popupElement.addEventListener('mousedown', handleClosePopupToOverlayOrButton);   
   }
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
+    clearErrorsByClosePopup(popupElement);
     document.removeEventListener('keydown', handleClosePopupToEsc);
-    document.removeEventListener('click', handleClosePopupToOverlayOrButton); 
+    popupElement.removeEventListener('mousedown', handleClosePopupToOverlayOrButton); 
   }
 
 const handleButtonLike = (e) => e.target.classList.toggle('photo-card__like_active');
@@ -40,7 +41,7 @@ const handleClosePopupToEsc = (e) => {
 
 const handleClosePopupToOverlayOrButton = (e) => {
   if(e.target.classList.contains('popup')||e.target.classList.contains('popup__btn-close')) {
-    closePopup(document.querySelector('.popup_opened'));
+    closePopup( e.currentTarget);
   }
 }
 
@@ -79,28 +80,34 @@ const handleAddPhoto = () => {
  
 const handleOpenEditForm = () => {
   nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent;
-  hideInputError(formEditElement, nameInput, jobInput);
-}
+  jobInput.value = userJob.textContent; 
+};
 
 const handleCloseEditForm = () => {
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
   closePopup(popupEditForm);
-}
+};
 
 const handleClearAddPopupForm = () => {
   captionInput.value = '';
-  linkInput.value = '';
-  hideInputError(formAddElement, captionInput, linkInput);
- }
+  linkInput.value = '';   
+ };
+
+ const clearErrorsByClosePopup = (popupElement) => {
+  const inputList = Array.from(popupElement.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {  
+      hideInputError(popupElement, inputElement, config);
+  });
+};
 
   //Listeners
 
 buttonAddPopup.addEventListener('click', (e) => {
   openPopup(popupAddForm);
   handleClearAddPopupForm();
-  buttonSubmitAddPopup.classList.add('popup__btn-submit_disabled'); 
+  buttonSubmitAddPopup.classList.add('popup__btn-submit_disabled');
+  buttonSubmitAddPopup.setAttribute('disabled', true);
 });
 
 formAddElement.addEventListener('submit', (e) => {

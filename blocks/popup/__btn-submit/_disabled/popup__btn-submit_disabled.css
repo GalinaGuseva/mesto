@@ -4,3 +4,7 @@
   color: #c4c4c4;
   cursor: default;
 }
+
+.popup__btn-submit_disabled:hover {
+  opacity: 1;
+}
