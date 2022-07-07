@@ -2,8 +2,6 @@ import { config, initialCards } from "./utils/constants.js"
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 export { openPopup };
-
-
 const popupEditForm = document.querySelector('.edit-popup');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const userName = document.querySelector('.profile__name');
@@ -52,8 +50,8 @@ initialCards.forEach(element => {
 
 const handleAddPhoto = () => {
   const addCard = new Card({name: captionInput.value, link: linkInput.value},'.photo-card-template');
-  const cardElement = addCard.createCard();
-  photosList.prepend(cardElement);
+  const addCardElement = addCard.createCard();
+  photosList.prepend(addCardElement);
   closePopup(popupAddForm);
   formAddElement.reset();
 }; 
@@ -97,3 +95,4 @@ formEditElement.addEventListener('submit', (e) => {
   e.preventDefault();
   handleCloseEditForm();
 });
+

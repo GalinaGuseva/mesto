@@ -4,9 +4,9 @@ const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
 const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
 
 export class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(element, cardSelector) {
+    this._name = element.name;
+    this._link = element.link;
     this._cardSelector = cardSelector;
   };
 
