@@ -1,7 +1,8 @@
-import { config } from "./data.js"
+import { config, initialCards } from "./utils/constants.js"
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 export { openPopup };
+
 
 const popupEditForm = document.querySelector('.edit-popup');
 const buttonEdit = document.querySelector('.profile__edit-button');
@@ -15,6 +16,9 @@ const captionInput = document.querySelector(".add-popup__field[name='caption']")
 const linkInput = document.querySelector(".add-popup__field[name='photo-link']");
 const buttonAddPopup = document.querySelector('.profile__add-button');
 const formAddElement = popupAddForm.querySelector(".add-popup__container[name='add-photo']");
+const photosList = document.querySelector('.photos__list');
+const validateFormEdit = new FormValidator(config, formEditElement);
+const validateFormAdd = new FormValidator(config, formAddElement);
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
@@ -40,10 +44,16 @@ const handleClosePopupToOverlayOrButton = (e) => {
   }
 }
 
+initialCards.forEach(element => {
+  const card = new Card(element,'.photo-card-template'); 
+  const cardElement = card.createCard();
+  photosList.prepend(cardElement);
+});   
+
 const handleAddPhoto = () => {
   const addCard = new Card({name: captionInput.value, link: linkInput.value},'.photo-card-template');
   const cardElement = addCard.createCard();
-  document.querySelector('.photos__list').prepend(cardElement);
+  photosList.prepend(cardElement);
   closePopup(popupAddForm);
   formAddElement.reset();
 }; 
@@ -59,7 +69,13 @@ const handleCloseEditForm = () => {
   closePopup(popupEditForm);
 }; 
 
+//Вызов валидатора
+
+validateFormEdit.enableValidation();
+validateFormAdd.enableValidation();
+
 //Listeners
+
 buttonAddPopup.addEventListener('click', (e) => {
   openPopup(popupAddForm);
   formAddElement.reset();
@@ -81,10 +97,3 @@ formEditElement.addEventListener('submit', (e) => {
   e.preventDefault();
   handleCloseEditForm();
 });
-
-//Вызов валидатора
-const validateFormEdit = new FormValidator(config, formEditElement);
-validateFormEdit.enableValidation();
-
-const validateFormAdd = new FormValidator(config, formAddElement);
-validateFormAdd.enableValidation();

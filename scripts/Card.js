@@ -1,5 +1,4 @@
 import { openPopup } from "./index.js";
-import { initialCards } from "./data.js"
 const photoPopup = document.querySelector('.photo-popup');
 const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
 const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
@@ -52,10 +51,4 @@ _getTemplate() {
      
      return this._element;
    }
-  }
-
-  initialCards.forEach(element => {
-    const card = new Card(element,'.photo-card-template'); 
-    const cardElement = card.createCard();
-    document.querySelector('.photos__list').prepend(cardElement);
-  });   
+  }  
