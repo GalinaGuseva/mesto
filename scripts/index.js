@@ -1,3 +1,8 @@
+import { config } from "./data.js"
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+export { openPopup };
+
 const popupEditForm = document.querySelector('.edit-popup');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const userName = document.querySelector('.profile__name');
@@ -5,11 +10,6 @@ const userJob = document.querySelector('.profile__job');
 const nameInput = document.querySelector(".edit-popup__field[name='userName']");
 const jobInput = document.querySelector(".edit-popup__field[name='userJob']");
 const formEditElement = popupEditForm.querySelector('.edit-popup__container');
-const cardTemplateElement = document.querySelector('.photo-card-template').content;
-const photosListElement = document.querySelector('.photos__list');
-const photoPopup = document.querySelector('.photo-popup');
-const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
-const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
 const popupAddForm = document.querySelector('.add-popup');
 const captionInput = document.querySelector(".add-popup__field[name='caption']");
 const linkInput = document.querySelector(".add-popup__field[name='photo-link']");
@@ -28,9 +28,6 @@ function closePopup(popupElement) {
     popupElement.removeEventListener('mousedown', handleClosePopupToOverlayOrButton); 
   }
 
-const handleButtonLike = (e) => e.target.classList.toggle('photo-card__like_active');
-const handleButtonDelete = (e) => e.target.closest('.photo-card').remove(); 
- 
 const handleClosePopupToEsc = (e) => {
   if(e.key === "Escape") {
   closePopup(document.querySelector('.popup_opened'));
@@ -43,35 +40,10 @@ const handleClosePopupToOverlayOrButton = (e) => {
   }
 }
 
-const createPhotoPopup = element => {
-    photoPopupImage.src = element.link;
-    photoPopupImage.alt = element.name;
-    photoPopupCaption.textContent = element.name; 
-    openPopup(photoPopup);
-  };
-  
- const createCard = element => {
-  const card = cardTemplateElement.querySelector('.photo-card').cloneNode(true);
-  const cardImage = card.querySelector('.photo-card__image');
-  const cardText = card.querySelector('.photo-card__text');
-  cardText.textContent = element.name;
-  cardImage.src = element.link;
-  cardImage.alt = element.name;
-  cardImage.addEventListener('click', () => createPhotoPopup(element));   
-  card.querySelector('.photo-card__like').addEventListener('click', handleButtonLike);
-  card.querySelector('.photo-card__btn-delete').addEventListener('click', handleButtonDelete);
-    return card;  
- };
-
- const renderCard = element => {
-  card = createCard(element);
-  photosListElement.prepend(card);
-  };
- 
- initialCards.forEach(renderCard);
-
 const handleAddPhoto = () => {
-  renderCard({name: captionInput.value, link: linkInput.value});
+  const addCard = new Card({name: captionInput.value, link: linkInput.value},'.photo-card-template');
+  const cardElement = addCard.createCard();
+  document.querySelector('.photos__list').prepend(cardElement);
   closePopup(popupAddForm);
   formAddElement.reset();
 }; 
@@ -87,12 +59,11 @@ const handleCloseEditForm = () => {
   closePopup(popupEditForm);
 }; 
 
-  //Listeners
-
+//Listeners
 buttonAddPopup.addEventListener('click', (e) => {
   openPopup(popupAddForm);
   formAddElement.reset();
-  clearErrors(formAddElement, config);
+  validateFormAdd.clearErrors();
 });
 
 formAddElement.addEventListener('submit', (e) => {
@@ -103,10 +74,17 @@ formAddElement.addEventListener('submit', (e) => {
 buttonEdit.addEventListener('click', (e) => {
   openPopup(popupEditForm);
   handleOpenEditForm(); 
-  clearErrors(formEditElement, config); 
+  validateFormEdit.clearErrors(); 
 });
  
 formEditElement.addEventListener('submit', (e) => {
   e.preventDefault();
   handleCloseEditForm();
 });
+
+//Вызов валидатора
+const validateFormEdit = new FormValidator(config, formEditElement);
+validateFormEdit.enableValidation();
+
+const validateFormAdd = new FormValidator(config, formAddElement);
+validateFormAdd.enableValidation();

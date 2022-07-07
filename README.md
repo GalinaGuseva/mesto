@@ -12,7 +12,7 @@
 
 Функционал: редактирование профиля пользователя, добавление и удаление фотографии, "лайк" для фотографии, попап для просмотра фотографий в увеличенном размере, валидация форм.
 
-Технологии: Flexbox, Positioning Elements, Animation and Transform using CSS, BEM Methodology, File Structure and File Paths (Nested BEM), Git, Figma
+Технологии: Flexbox, Positioning Elements, Animation and Transform using CSS, BEM Methodology, File Structure and File Paths (Nested BEM), OOP, Git, Figma
 
 ### Контакты
 
