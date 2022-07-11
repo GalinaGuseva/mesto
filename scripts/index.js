@@ -1,4 +1,4 @@
-import { config, initialCards } from "./utils/constants.js"
+import { validationConfig, initialCards, cardConfig } from "./utils/constants.js"
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 export { openPopup };
@@ -15,8 +15,8 @@ const linkInput = document.querySelector(".add-popup__field[name='photo-link']")
 const buttonAddPopup = document.querySelector('.profile__add-button');
 const formAddElement = popupAddForm.querySelector(".add-popup__container[name='add-photo']");
 const photosList = document.querySelector('.photos__list');
-const validateFormEdit = new FormValidator(config, formEditElement);
-const validateFormAdd = new FormValidator(config, formAddElement);
+const validateFormEdit = new FormValidator(validationConfig, formEditElement);
+const validateFormAdd = new FormValidator(validationConfig, formAddElement);
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
@@ -40,21 +40,25 @@ const handleClosePopupToOverlayOrButton = (e) => {
   if(e.target.classList.contains('popup')||e.target.classList.contains('popup__btn-close')) {
     closePopup( e.currentTarget);
   }
-}
+};
 
-initialCards.forEach(element => {
-  const card = new Card(element,'.photo-card-template'); 
+//Создание экземпляров классов карточек
+
+const renderCard = element => {
+  const card = new Card(element, cardConfig.cardSelector); 
   const cardElement = card.createCard();
   photosList.prepend(cardElement);
-});   
+}  
+
+initialCards.forEach(renderCard);   
 
 const handleAddPhoto = () => {
-  const addCard = new Card({name: captionInput.value, link: linkInput.value},'.photo-card-template');
-  const addCardElement = addCard.createCard();
-  photosList.prepend(addCardElement);
+  renderCard({name: captionInput.value, link: linkInput.value});
   closePopup(popupAddForm);
   formAddElement.reset();
 }; 
+
+//Открытие  изакрытие формы редактирования профиля
  
 const handleOpenEditForm = () => {
   nameInput.value = userName.textContent;

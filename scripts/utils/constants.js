@@ -1,4 +1,4 @@
-const config = {
+const validationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__field',
     submitButtonSelector: '.popup__btn-submit',
@@ -34,4 +34,14 @@ const config = {
     }
   ];
 
-  export { config, initialCards };
+  const cardConfig = {
+    cardSelector: '.photo-card-template',
+    oneCardSelector: '.photo-card',
+    likeButtonSelector: '.photo-card__like',
+    activeLikeClass: 'photo-card__like_active',
+    closeButtonSelector: '.photo-card__btn-delete',
+    cardImage: '.photo-card__image',
+    cardText: '.photo-card__text'
+  };
+
+  export { validationConfig, initialCards, cardConfig };
