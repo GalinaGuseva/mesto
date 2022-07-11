@@ -1,3 +1,7 @@
+const photoPopup = document.querySelector('.photo-popup');
+const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
+const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
+
 const validationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__field',
@@ -42,6 +46,6 @@ const validationConfig = {
     closeButtonSelector: '.photo-card__btn-delete',
     cardImage: '.photo-card__image',
     cardText: '.photo-card__text'
-  };
+  };  
 
-  export { validationConfig, initialCards, cardConfig };
+  export { validationConfig, initialCards, cardConfig, photoPopup, photoPopupImage, photoPopupCaption  };

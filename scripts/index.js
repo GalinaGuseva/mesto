@@ -58,7 +58,7 @@ const handleAddPhoto = () => {
   formAddElement.reset();
 }; 
 
-//Открытие  изакрытие формы редактирования профиля
+//Открытие и закрытие формы редактирования профиля
  
 const handleOpenEditForm = () => {
   nameInput.value = userName.textContent;
