@@ -1,19 +1,12 @@
-import { openPopup } from "./index.js";
-import { cardConfig, photoPopup, photoPopupImage, photoPopupCaption } from "./utils/constants.js";
+import { cardConfig } from "../utils/constants.js";
 
-function createPhotoPopup(name, link) {
-  photoPopupImage.src = link;
-  photoPopupImage.alt = name;
-  photoPopupCaption.textContent = name; 
-  openPopup(photoPopup);
-};
-
-export class Card {
-  constructor(element, cardSelector) {
+export default class Card {
+  constructor(element, cardSelector, handleCardClick) {
     this._name = element.name;
     this._link = element.link;
     this._cardConfig = cardConfig;
-    this._cardSelector = cardSelector;
+    this._cardSelector = cardSelector; 
+    this._handleCardClick = handleCardClick;     
   };
 
 _getTemplate() {
@@ -32,16 +25,17 @@ _getTemplate() {
  };
 
  _handleCloseButton = () => this._element.remove(); 
-
- _setEventListeners() {
-    this._element.querySelector(this._cardConfig.cardImage).addEventListener('click', (e) => {
-      createPhotoPopup(this._name, this._link)
-    });    
-    this._element.querySelector(this._cardConfig.likeButtonSelector).addEventListener('click', this._handleLikeButton);
-    this._element.querySelector(this._cardConfig.closeButtonSelector).addEventListener('click', this._handleCloseButton);
+ 
+  _setEventListeners() {
+    this._element.querySelector(this._cardConfig.cardImage)
+    .addEventListener('click', () => this._handleCardClick());
+    this._element.querySelector(this._cardConfig.likeButtonSelector)
+    .addEventListener('click', this._handleLikeButton);
+    this._element.querySelector(this._cardConfig.closeButtonSelector)
+    .addEventListener('click', this._handleCloseButton);
   };
  
-  createCard() {
+  generateCard() {
      this._element = this._getTemplate();
      this._setEventListeners();
      this._element.querySelector(this._cardConfig.cardImage).src = this._link;

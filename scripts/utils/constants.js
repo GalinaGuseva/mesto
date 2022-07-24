@@ -1,7 +1,3 @@
-const photoPopup = document.querySelector('.photo-popup');
-const photoPopupImage = photoPopup.querySelector('.photo-popup__image');
-const photoPopupCaption = photoPopup.querySelector('.photo-popup__caption');
-
 const validationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__field',
@@ -48,4 +44,4 @@ const validationConfig = {
     cardText: '.photo-card__text'
   };  
 
-  export { validationConfig, initialCards, cardConfig, photoPopup, photoPopupImage, photoPopupCaption  };
+  export { validationConfig, initialCards, cardConfig  };
