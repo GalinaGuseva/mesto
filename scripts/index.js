@@ -31,10 +31,10 @@ const createCard = element => {
   const card = new Card(element, cardConfig.cardSelector, handleCardClick); 
       const cardElement = card.generateCard();
       cardList.addItem(cardElement);
-};
+  }; 
 
 const cardList = new Section({ 
-items: initialCards, 
+  items: initialCards, 
   renderer: (element) => createCard(element)}, '.photos__list');
 
 cardList.renderItem();
@@ -58,8 +58,8 @@ const popupWitAddForm = new PopupWithForm(
   popupAddForm, {
    handleSubmit: values => {
     const captionInput = values.caption;
-    const linkInput = values.link;     
-   createCard({name: captionInput, link: linkInput});
+    const linkInput = values.link; 
+    createCard({name: captionInput, link: linkInput});     
    }
   }); 
   popupWitAddForm.setEventListeners();
