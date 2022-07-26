@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
-    <link rel="stylesheet" href="pages/index.css" />
+    <title>Mesto</title>    
   </head>
   <body class="page">
     <div class="page__center">
       <header class="header">
-        <img src="./images/logo.svg" alt="лого" class="header__logo" />
+        <img src="<%=require('./images/logo.svg')%>" alt="лого" class="header__logo" />
       </header>
       <main>
         <section class="profile">
           <div class="profile__info">
-            <img src="./images/avatar.jpg" alt="Кусто" class="profile__image" />
+            <img src="<%=require('./images/avatar.jpg')%>" alt="Кусто" class="profile__image" />
             <div class="profile__text-block">
               <div class="profile__text-container">
                 <h1 class="profile__name">Баба Яга</h1>
@@ -144,7 +143,7 @@
 
     <div class="popup photo-popup">
       <figure class="photo-popup__container">
-        <img src="./images/Урал.jpg" alt="Урал" class="photo-popup__image" />
+        <img src="<%=require('./images/Урал.jpg')%>" alt="Урал" class="photo-popup__image" />
         <figcaption class="photo-popup__caption"></figcaption>
         <button
           type="button"
@@ -159,25 +158,23 @@
         <button type="button" class="photo-card__btn-delete">
           <div class="photo-card__trash">
             <img
-              src="./images/trash-top.svg"
+              src="<%=require('./images/trash-top.svg')%>"
               alt="корзина-верх"
               class="photo-card__delete-top"
             />
             <img
-              src="./images/trash-bottom.svg"
+              src="<%=require('./images/trash-bottom.svg')%>"
               alt="'корзина-низ"
               class="photo-card__delete"
             />
           </div>
         </button>
-        <img src="./images/Урал.jpg" alt="Урал" class="photo-card__image" />
+        <img src="<%=require('./images/Урал.jpg')%>" alt="Урал" class="photo-card__image" />
         <div class="photo-card__caption">
           <h2 class="photo-card__text"></h2>
           <button type="button" class="photo-card__like"></button>
         </div>
       </li>
-    </template>
-
-    <script type="module" src="./scripts/index.js"></script>
+    </template>   
   </body>
 </html>

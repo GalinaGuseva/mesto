@@ -1,10 +1,11 @@
-import { validationConfig, initialCards, cardConfig } from "./utils/constants.js"
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import Section from "./components/Section.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
+import './pages/index.css';
+import { validationConfig, initialCards, cardConfig } from "./scripts/utils/constants.js"
+import Card from "./scripts/components/Card.js";
+import FormValidator from "./scripts/components/FormValidator.js";
+import Section from "./scripts//components/Section.js";
+import PopupWithImage from "./scripts/components/PopupWithImage.js";
+import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import UserInfo from "./scripts/components/UserInfo.js";
 const userName = document.querySelector('.profile__name');
 const userJob = document.querySelector('.profile__job');
 const popupEditForm = document.querySelector('.edit-popup');
@@ -16,7 +17,7 @@ const buttonAddPopup = document.querySelector('.profile__add-button');
 const validateFormEdit = new FormValidator(validationConfig, formEditElement);
 const validateFormAdd = new FormValidator(validationConfig, formAddElement);
 
-//Создание экземпляров классов попапов
+//Создание экземпляра класса попапа с фото
 const imagePopup = new PopupWithImage('.photo-popup');
  imagePopup.setEventListeners();
 
@@ -34,7 +35,7 @@ const createCard = element => {
 };
 
 const cardList = new Section({ 
-items: initialCards, 
+  items: initialCards, 
   renderer: (element) => createCard(element)}, '.photos__list');
 
 cardList.renderItem();
