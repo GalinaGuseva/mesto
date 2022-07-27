@@ -1,13 +1,4 @@
-const validationConfig = {
-    formSelector: '.popup__container',
-    inputSelector: '.popup__field',
-    submitButtonSelector: '.popup__btn-submit',
-    inactiveButtonClass: 'popup__btn-submit_disabled',
-    inputErrorClass: 'popup__field_invalid',
-    errorClass: 'popup__error-message_visible'
-  };
-
-  const initialCards = [
+  export const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -34,14 +25,11 @@ const validationConfig = {
     }
   ];
 
-  const cardConfig = {
-    cardSelector: '.photo-card-template',
-    oneCardSelector: '.photo-card',
-    likeButtonSelector: '.photo-card__like',
-    activeLikeClass: 'photo-card__like_active',
-    closeButtonSelector: '.photo-card__btn-delete',
-    cardImage: '.photo-card__image',
-    cardText: '.photo-card__text'
-  };  
-
-  export { validationConfig, initialCards, cardConfig  };
+  export const validationConfig = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__field',
+    submitButtonSelector: '.popup__btn-submit',
+    inactiveButtonClass: 'popup__btn-submit_disabled',
+    inputErrorClass: 'popup__field_invalid',
+    errorClass: 'popup__error-message_visible'
+  };

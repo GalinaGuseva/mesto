@@ -1,3 +1,5 @@
+
+   
    export default class FormValidator {
       constructor(validationConfig, formElement) {
       this._validationConfig = validationConfig;
@@ -62,7 +64,6 @@
   }
 
    enableValidation() {
-      this._formElement.addEventListener('submit', (e) => e.preventDefault());
       this._setEventListeners();
   }
 }   
