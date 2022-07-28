@@ -1,14 +1,14 @@
 import './index.css';
-import { initialCards, validationConfig } from "../scripts/utils/constants.js"
-import { Card, cardConfig } from "../scripts/components/Card.js";
+import { initialCards, validationConfig, cardConfig } from "../scripts/utils/constants.js"
+import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts//components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import UserInfo from "../scripts/components/UserInfo.js";
-const userName = document.querySelector('.profile__name');
-const userJob = document.querySelector('.profile__job');
-const userData = {userName, userJob};
+const userNameSelector = '.profile__name'; 
+const userJobSelector = '.profile__job'; 
+const userData = {userNameSelector, userJobSelector};
 const formEditElement = document.querySelector('.edit-popup__container');
 const formAddElement = document.querySelector(".add-popup__container[name='add-photo']");
 const buttonEdit = document.querySelector('.profile__edit-button');
@@ -21,9 +21,7 @@ const imagePopup = new PopupWithImage('.photo-popup');
  imagePopup.setEventListeners();
 
  function handleCardClick(link, name) {  
-  link = this._link; 
-  name = this._name;
-     imagePopup.open(link, name);
+       imagePopup.open(link, name);
  };
 
 //Создание экземпляров классов карточек

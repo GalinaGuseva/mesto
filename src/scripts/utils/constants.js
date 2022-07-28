@@ -33,3 +33,13 @@
     inputErrorClass: 'popup__field_invalid',
     errorClass: 'popup__error-message_visible'
   };
+
+  export const cardConfig = {
+    cardSelector: '.photo-card-template',
+    oneCardSelector: '.photo-card',
+    likeButtonSelector: '.photo-card__like',
+    activeLikeClass: 'photo-card__like_active',
+    deleteButtonSelector: '.photo-card__btn-delete',
+    imageSelector: '.photo-card__image',
+    textSelector: '.photo-card__text'     
+  }; 

@@ -1,14 +1,4 @@
-export const cardConfig = {
-  cardSelector: '.photo-card-template',
-  oneCardSelector: '.photo-card',
-  likeButtonSelector: '.photo-card__like',
-  activeLikeClass: 'photo-card__like_active',
-  deleteButtonSelector: '.photo-card__btn-delete',
-  imageSelector: '.photo-card__image',
-  textSelector: '.photo-card__text'     
-}; 
-
-export class Card {
+export default class Card {
   constructor(element, cardConfig, handleCardClick) {
     this._cardConfig = cardConfig;
     this._name = element.name;
@@ -25,28 +15,30 @@ _getTemplate() {
   };
 
   _handleLikeButton = () => {
-    this._element.querySelector(this._cardConfig.likeButtonSelector)
-    .classList.toggle(this._cardConfig.activeLikeClass);
+    this._likeButton.classList.toggle(this._cardConfig.activeLikeClass);
  };
 
- _handleDeleteButton = () => this._element.remove(); 
+ _handleDeleteButton = () => {
+     this._element.remove();
+     this._element = null;
+ }; 
  
   _setEventListeners() {
     this._element.querySelector(this._cardConfig.imageSelector)
-    .addEventListener('click', () => this._handleCardClick());
-    this._element.querySelector(this._cardConfig.likeButtonSelector)
-    .addEventListener('click', this._handleLikeButton);
+    .addEventListener('click', () => this._handleCardClick(this._link, this._name));
+    this._likeButton = this._element.querySelector(this._cardConfig.likeButtonSelector);
+    this._likeButton.addEventListener('click', this._handleLikeButton);
     this._element.querySelector(this._cardConfig.deleteButtonSelector)
     .addEventListener('click', this._handleDeleteButton);
   };
  
   generateCard() {
      this._element = this._getTemplate();     
-     this._text = this._element.querySelector(this._cardConfig.textSelector);  
+     this._image = this._element.querySelector(this._cardConfig.imageSelector);  
      this._setEventListeners();
-     this._element.querySelector(this._cardConfig.imageSelector).src = this._link;
-     this._text.alt = this._name;
-     this._text.textContent = this._name;
+     this._image.src = this._link;
+     this._image.alt = this._name;
+     this._element.querySelector(this._cardConfig.textSelector).textContent = this._name;
      
      return this._element;
    }
