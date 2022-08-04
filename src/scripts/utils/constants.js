@@ -43,3 +43,11 @@
     imageSelector: '.photo-card__image',
     textSelector: '.photo-card__text'     
   }; 
+
+  export const apiOptions = {
+    url: 'https://mesto.nomoreparties.co/v1/cohort-47',
+    headers: {
+      authorization: '3b67ac11-b29e-4182-9110-a6f8ab5d8b17',
+      'Content-Type': 'application/json' 
+  }
+};
