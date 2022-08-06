@@ -1,0 +1,9 @@
+.photo-card__like-count {
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.23;
+    text-align: center;
+    padding-top: 3px;
+    margin: 0;
+}

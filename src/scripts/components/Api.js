@@ -23,17 +23,49 @@ export default class Api {
    // Загрузка данных профиля с сервера
     getUserInfo() {
       return fetch(`${this._url}/users/me`, {
+        headers: this._headers
+      })
+        .then((res) => this. _getResponse(res));
+    }
+
+    //Редактирование профиля
+    editUserInfo(data) {
+      return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,      
         body: JSON.stringify({
-           name: 'Баба Яга',
-           about: 'Гроза морей'
+           name: data.name,
+           about: data.about
         })
       })
       .then((res) => this. _getResponse(res));
     }
 
-    
+    //Обновление аватара пользователя
+      updateAvatar(data) {
+        return fetch(`${this._url}/users/me/avatar`, {
+          method: 'PATCH',
+          headers: this._headers,      
+          body: JSON.stringify({
+             avatr: data.avatar             
+        })
+      })
+      .then((res) => this. _getResponse(res));
+    }
+
+   // Добавление новой карточки
+     addCard(data) {
+        return fetch(`${this._url}/cards`, {
+          method: 'POST',
+          headers: this._headers,      
+          body: JSON.stringify({
+            name: data.caption,
+            link: data.link
+          })
+        })
+        .then((res) => this. _getResponse(res));
+      }
+
 // Другие методы
  
   }

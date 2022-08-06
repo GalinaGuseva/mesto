@@ -86,9 +86,9 @@ const popupWithEditForm = new PopupWithForm(
 
 const popupWitAddForm = new PopupWithForm(
   '.add-popup', {
-   handleSubmit: values => {
-    const captionInput = values.caption;
-    const linkInput = values.link; 
+   handleSubmit: data => {
+    const captionInput = data.caption;
+    const linkInput = data.link; 
     const newCard = createCard({name: captionInput, link: linkInput});
     cardList.addItem(newCard);   
    }
