@@ -29,15 +29,15 @@ export default class Api {
     }
 
     //Редактирование профиля
-    editUserInfo(data) {
+    editUserInfo(userData) {
       return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,      
         body: JSON.stringify({
-           name: data.name,
-           about: data.about
+          name: userData.userName, 
+          about: userData.userJob
         })
-      })
+        })
       .then((res) => this. _getResponse(res));
     }
 
@@ -47,8 +47,7 @@ export default class Api {
           method: 'PATCH',
           headers: this._headers,      
           body: JSON.stringify({
-             avatr: data.avatar             
-        })
+            avatar: data.avatar})
       })
       .then((res) => this. _getResponse(res));
     }
@@ -57,11 +56,8 @@ export default class Api {
      addCard(data) {
         return fetch(`${this._url}/cards`, {
           method: 'POST',
-          headers: this._headers,      
-          body: JSON.stringify({
-            name: data.caption,
-            link: data.link
-          })
+          headers: this._headers,          
+          body: JSON.stringify(data)
         })
         .then((res) => this. _getResponse(res));
       }

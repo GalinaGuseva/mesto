@@ -12,19 +12,19 @@
       </header>
       <main>
         <section class="profile">
-          <div class="profile__info">
-            <img src="<%=require('./images/avatar.jpg')%>" alt="Кусто" class="profile__image" />
-            <button type="button" class="profile__edit-avatar-button"></button>
-            <div class="profile__text-block">
-              <div class="profile__text-container">
-                <h1 class="profile__name">Баба Яга</h1>
+          <div class="profile__info">            
+             <img src="<%=require('./images/avatar.jpg')%>" alt="Кусто" class="profile__image" />
+             <button type="button" class="profile__edit-avatar-button"></button>
+            <div class="profile__text-block"> 
+              <div class="profile__text-container"> 
+                <h1 class="profile__name"></h1>
                 <button
                   type="button"
                   class="profile__edit-button"
-                  title="Редактировать"
+                  title="Редактировать" 
                 ></button>
-              </div>
-              <p class="profile__job">Гроза морей</p>
+              </div>             
+              <p class="profile__job"></p>
             </div>
           </div>
           <button
@@ -110,12 +110,12 @@
           placeholder="Ссылка на картинку"
           class="avatar-popup__field popup__field"
           name="avatar"
-          id="avatar-link"
+          id="avatar-url-input"
           required
         />
         <span
-          id="url-error"
-          class="popup__error-message url-input-error"
+          id="avater-url-error"
+          class="popup__error-message avatar-url-input-error"
         ></span>
         <button
           type="submit"
@@ -226,8 +226,10 @@
         <img src="<%=require('./images/Урал.jpg')%>" alt="Урал" class="photo-card__image" />
         <div class="photo-card__caption">
           <h2 class="photo-card__text"></h2>
+          <div class="photo-card__container-like">
           <button type="button" class="photo-card__like"></button>
           <p class="photo-card__like-count">0</p>
+        </div>
         </div>
       </li>
     </template>   

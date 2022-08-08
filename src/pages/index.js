@@ -1,6 +1,6 @@
 import './index.css';
 import Api from "../scripts/components/Api.js";
-import { initialCards, validationConfig, cardConfig, apiOptions } from "../scripts/utils/constants.js"
+import { validationConfig, cardConfig, apiOptions } from "../scripts/utils/constants.js"
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts//components/Section.js";
@@ -16,6 +16,7 @@ const formAvatarEditElement = document.querySelector('.avatar-popup__container')
 const formAddElement = document.querySelector(".add-popup__container[name='add-photo']");
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAddPopup = document.querySelector('.profile__add-button');
+const buttonAvatarEdit = document.querySelector('.profile__edit-avatar-button');
 const validatorEditForm = new FormValidator(validationConfig, formEditElement);
 const validatorAddForm = new FormValidator(validationConfig, formAddElement);
 const validatorAvatarForm = new FormValidator(validationConfig, formAvatarEditElement);
@@ -29,20 +30,40 @@ validatorAvatarForm.enableValidation();
 const api = new Api(apiOptions);
 
 let userId;
-
+//Начальная загрузка карточек и данных пользователя с сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([user, cards]) => {
       userId = user._id;
-      console.log([user, cards]);
-      profileInfo.setUserInfo(user);
-      profileInfo.setUserAvatar(user);
-      
+      profileInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });  
       cardList.renderItems(cards);
     })
     .catch((err) => {
       console.log(err);
     })
+   //Работа с данными пользователя
+const profileInfo = new UserInfo(userData);
 
+const popupWithEditForm = new PopupWithForm('.edit-popup', {
+    handleSubmit: (userData) => {             
+      api.editUserInfo(userData)
+        .then((res) => {
+           profileInfo.setUserInfo({ name: res.name, about: res.about });
+        })
+        .catch(err => console.log(`Error: ${err}`))     
+      }
+  });
+popupWithEditForm.setEventListeners();
+
+const popupWithAvatarForm = new PopupWithForm('.avatar-popup', {
+      handleSubmit: (data) => {
+         api.updateAvatar(data)
+          .then((res) => {
+            profileInfo.setUserAvatar({ avatar: res.avatar });
+            })          
+          .catch(err => console.log(`Error: ${err}`))     
+       }
+   });
+ popupWithAvatarForm.setEventListeners();     
 
 //Создание экземпляра класса попапа с фото
 const imagePopup = new PopupWithImage('.photo-popup');
@@ -61,28 +82,12 @@ const createCard = element => {
       return cardElement;      
   };  
 
-  const cardList = new Section({ 
+const cardList = new Section({ 
      renderer: (element) => {
       const card = createCard(element);
       cardList.addItem(card);
     }
-    }, '.photos__list');
-  
-
-//Создание экземпляра класса UserInfo
-const profileInfo = new UserInfo(userData);
-
-//Создание экземпляров попапов с формой
-
-const popupWithEditForm = new PopupWithForm(
-  '.edit-popup', {
-   handleSubmit: (values) => {
-    const inputName = values.userName;
-    const inputJob = values.userJob;
-     profileInfo.setUserInfo({inputName, inputJob})
-   }
-   });
-   popupWithEditForm.setEventListeners();
+    }, '.photos__list');   
 
 const popupWitAddForm = new PopupWithForm(
   '.add-popup', {
@@ -93,20 +98,23 @@ const popupWitAddForm = new PopupWithForm(
     cardList.addItem(newCard);   
    }
   }); 
-  popupWitAddForm.setEventListeners();
-
-
+popupWitAddForm.setEventListeners();
 
 //Listeners
 
 buttonAddPopup.addEventListener('click', (e) => {
     popupWitAddForm.open();
     formAddElement.reset();
-    validateFormAdd.clearErrors();
+    validatorAddForm.clearErrors();
   });
 
 buttonEdit.addEventListener('click', (e) => {
     popupWithEditForm.open();
     profileInfo.getUserInfo(); 
-    validateFormEdit.clearErrors(); 
+    validatorEditForm.clearErrors(); 
   });
+
+  buttonAvatarEdit.addEventListener('click', (e) => {
+    popupWithAvatarForm.open();
+    validatorAvatarForm.clearErrors(); 
+});
