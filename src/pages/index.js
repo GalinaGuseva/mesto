@@ -89,15 +89,19 @@ const cardList = new Section({
     }
     }, '.photos__list');   
 
-const popupWitAddForm = new PopupWithForm(
-  '.add-popup', {
-   handleSubmit: data => {
-    const captionInput = data.caption;
-    const linkInput = data.link; 
-    const newCard = createCard({name: captionInput, link: linkInput});
-    cardList.addItem(newCard);   
-   }
-  }); 
+const popupWitAddForm = new PopupWithForm('.add-popup', {
+   handleSubmit: (data) => {
+    api.addCard(data)
+    .then((res) => {
+    const card = createCard(res);
+    cardList.addItem(card);
+    popupWitAddForm.close();
+   })
+   .catch((err) => {
+    console.log(err);
+})
+}
+});
 popupWitAddForm.setEventListeners();
 
 //Listeners
