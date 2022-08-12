@@ -14,7 +14,8 @@
     activeLikeClass: 'photo-card__like_active',
     deleteButtonSelector: '.photo-card__btn-delete',
     imageSelector: '.photo-card__image',
-    textSelector: '.photo-card__text'     
+    textSelector: '.photo-card__text',
+    likeCountSelector: '.photo-card__like-count'     
   }; 
 
   export const apiOptions = {

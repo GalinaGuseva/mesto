@@ -21,7 +21,7 @@ export default class Api {
   } 
     
    // Загрузка данных профиля с сервера
-    getUserInfo() {
+   getUserInfo() {
       return fetch(`${this._url}/users/me`, {
         headers: this._headers
       })
@@ -42,8 +42,8 @@ export default class Api {
     }
 
     //Обновление аватара пользователя
-      updateAvatar(data) {
-        return fetch(`${this._url}/users/me/avatar`, {
+    updateAvatar(data) {
+       return fetch(`${this._url}/users/me/avatar`, {
           method: 'PATCH',
           headers: this._headers,      
           body: JSON.stringify({
@@ -53,8 +53,8 @@ export default class Api {
     }
 
    // Добавление новой карточки
-     addCard(data) {
-        return fetch(`${this._url}/cards`, {
+    addCard(data) {
+      return fetch(`${this._url}/cards`, {
           method: 'POST',
           headers: this._headers,          
           body: JSON.stringify({
@@ -65,6 +65,29 @@ export default class Api {
         .then((res) => this. _getResponse(res));
       }
 
-// Другие методы
+// Удаление карточки
+   deleteCard(cardID) {
+      return fetch(`${this._url}/cards/${cardID}`, {
+        method: 'DELETE',
+        headers: this._headers
+    })
+    .then((res) => this. _getResponse(res));
+    }
  
+  //Постановка и снятие лайка
+   addLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      method: 'PUT',
+      headers: this._headers
+      })
+     .then((res) => this. _getResponse(res));
   }
+
+  removeLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers      
+    })
+    .then((res) => this. _getResponse(res));
+  }
+ }
