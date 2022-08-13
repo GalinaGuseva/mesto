@@ -1,6 +1,5 @@
 import './index.css';
 import Api from "../scripts/components/Api.js";
-import { validationConfig, cardConfig, apiOptions } from "../scripts/utils/constants.js"
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts//components/Section.js";
@@ -8,16 +7,18 @@ import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import PopupWithConfirm from "../scripts/components/PopupWithConfirm";
 import UserInfo from "../scripts/components/UserInfo.js";
-const userNameSelector = '.profile__name'; 
-const userJobSelector = '.profile__job';
-const userAvatarSelector = '.profile__image';
-const userData = {userNameSelector, userJobSelector, userAvatarSelector};
-const formEditElement = document.querySelector('.edit-popup__container');
-const formAvatarEditElement = document.querySelector('.avatar-popup__container');
-const formAddElement = document.querySelector(".add-popup__container[name='add-photo']");
-const buttonEdit = document.querySelector('.profile__edit-button');
-const buttonAddPopup = document.querySelector('.profile__add-button');
-const buttonAvatarEdit = document.querySelector('.profile__edit-avatar-button');
+import { 
+  apiOptions,
+  validationConfig,
+  cardConfig,
+  formEditElement, 
+  formAvatarEditElement, 
+  formAddElement, 
+  buttonEdit, 
+  buttonAddPopup, 
+  buttonAvatarEdit,  
+  userData
+} from "../scripts/utils/constants.js"
 
 const api = new Api(apiOptions);
 
@@ -39,23 +40,33 @@ const profileInfo = new UserInfo(userData);
 
 //Создание экземпляра класса попапа редактирования профиля
 const popupWithEditForm = new PopupWithForm('.edit-popup', {
-    handleSubmit: (userData) => {             
+    handleSubmit: (userData) => {
+      popupWithEditForm.renderLoading(true);           
       api.editUserInfo(userData)
         .then((res) => {
            profileInfo.setUserInfo({ name: res.name, about: res.about });
         })
-        .catch(err => console.log(`Error: ${err}`))     
+        .catch(err => console.log(`Error: ${err}`))
+        .finally(() => {
+          popupWithEditForm.close();
+          popupWithEditForm.renderLoading(false);
+      })    
       }
   });
 
 //Создание экземпляра класса попапа редактирования аватара профиля
 const popupWithAvatarForm = new PopupWithForm('.avatar-popup', {
       handleSubmit: (data) => {
+        popupWithAvatarForm.renderLoading(true);
          api.updateAvatar(data)
           .then((res) => {
             profileInfo.setUserAvatar({ avatar: res.avatar });
             })          
-          .catch(err => console.log(`Error: ${err}`))     
+          .catch(err => console.log(`Error: ${err}`))
+          .finally(() => {
+            popupWithAvatarForm.close();
+            popupWithAvatarForm.renderLoading(false);
+        })         
        }
    });   
 
@@ -66,22 +77,24 @@ const imagePopup = new PopupWithImage('.photo-popup');
 const popupWithConfirmForm = new PopupWithConfirm('.confirm-popup', {
     handleRemoveClick: () => {
       removeCard()
-}
+ }
 });
 
 //Создание экземпляра класса добавления карточки
 const popupWitAddForm = new PopupWithForm('.add-popup', {
   handleSubmit: (data) => {
-   api.addCard(data)
-   .then((res) => {
-   const card = createCard(res);
-   cardList.addItem(card);
-   popupWitAddForm.close();
-  })
-  .catch((err) => {
-   console.log(err);
-})
-}
+    popupWitAddForm.renderLoading(true);
+    api.addCard(data)
+     .then((res) => {
+       const card = createCard(res);
+       cardList.addItem(card);
+      })
+     .catch(err => console.log(`Error: ${err}`))
+     .finally(() => {
+       popupWitAddForm.close();
+       popupWitAddForm.renderLoading(false);       
+      })              
+ }
 });
 
 //Функция создания карточки и объявление экземпляра класса Сard

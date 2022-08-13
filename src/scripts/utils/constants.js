@@ -1,3 +1,14 @@
+export const userNameSelector = '.profile__name'; 
+export const userJobSelector = '.profile__job';
+export const userAvatarSelector = '.profile__image';
+export const userData = {userNameSelector, userJobSelector, userAvatarSelector};
+export const formEditElement = document.querySelector('.edit-popup__container');
+export const formAvatarEditElement = document.querySelector('.avatar-popup__container');
+export const formAddElement = document.querySelector(".add-popup__container[name='add-photo']");
+export const buttonEdit = document.querySelector('.profile__edit-button');
+export const buttonAddPopup = document.querySelector('.profile__add-button');
+export const buttonAvatarEdit = document.querySelector('.profile__edit-avatar-button');
+  
   export const validationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__field',
