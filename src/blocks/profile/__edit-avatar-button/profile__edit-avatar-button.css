@@ -6,7 +6,7 @@
    position: absolute;
    border-radius: 50%;
    padding: 0;
-   left:0;
+   left: 0;
    opacity: 0;
    background-repeat: no-repeat;
    background-position: center;
@@ -23,6 +23,9 @@
 
 @media screen and (max-width: 900px) {
     .profile__edit-avatar-button {
-      margin: 0 auto;
+      top: 0;
+      left: 0; 
+      right: 0;
+      margin: auto;
     }
   }
