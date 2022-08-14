@@ -8,6 +8,8 @@ export const formAddElement = document.querySelector(".add-popup__container[name
 export const buttonEdit = document.querySelector('.profile__edit-button');
 export const buttonAddPopup = document.querySelector('.profile__add-button');
 export const buttonAvatarEdit = document.querySelector('.profile__edit-avatar-button');
+export const nameInput = document.querySelector(".edit-popup__field[name='userName']"); 
+export const jobInput = document.querySelector(".edit-popup__field[name='userJob']");
   
   export const validationConfig = {
     formSelector: '.popup__container',
